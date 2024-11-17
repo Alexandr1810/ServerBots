@@ -6,6 +6,7 @@ import re #Лаба для работы с паттернами строк
 import datetime #Для работы с датой
 import pickle
 import pytz #Часовые пояса
+import telebot
 
 update_id = 732199299
 # Получаем
@@ -15,6 +16,7 @@ print("update_id", update_id)
 
 # Определяем московский часовой пояс
 moscow_tz = pytz.timezone("Europe/Moscow")
+
 
 
 #Функция для отправки запросов
@@ -175,7 +177,7 @@ def Get_Api_Data():
 	print()
 
 	for x in respose:
-		if  Current_Unix - x["LastBeryClick"] >= 1200:
+		if  Current_Unix - x["LastBeryClick"] >= 0:
 			Agent_Status = PostResponse("https://speedinet.bitrix24.ru/rest/25550/92yb1mz0rkt5e2cl/timeman.status",
 				{
 					"user_id": x["BT_Id"]
@@ -198,14 +200,14 @@ def Get_Api_Data():
 					   "User-Agent": "insomnia/9.3.2"
 					})
 					PostResponse("https://api.telegram.org/bot7377332361:AAFr8FnibII4GPnfcsHrUjss5amE91GrzYs/sendMessage", {
-						"chat_id": "-4548879553",
+						"chat_id": "-4511301904",
 						"text": "Агент "+x["user"]+" вернулся в работу!"
 					}, {
 						"Content-Type": "application/json",
 						"User-Agent": "insomnia/8.5.1"
 					})
 
-					print("Агент "+x["user"]+" вернулся в работу!")
+					print(f'Агент {x["user"]} вернулся в работу!')
 
 				elif Current_Unix - x["LastBeryClick"] >= 1200 and Current_Unix - x["LastBeryClick"] < 3600 and Agent_Status != "PAUSED":
 					"""
@@ -248,14 +250,14 @@ def Get_Api_Data():
 
 				elif Current_Unix - x["LastBeryClick"] >= 3600 and Current_Unix - x["LastBeryClick"] < 43200:
 					# Получаем текущее время в московском часовом поясе
-					moscow_time = datetime.now(moscow_tz)
+					moscow_time = datetime.datetime.now(moscow_tz)
 
 					if int(moscow_time.strftime("%H")) >= 4 and int(moscow_time.strftime("%H")) <= 18:
 						if x["InIgnoreList"] == True:
 							if Current_Unix - x["IgnoreUnix"] >= 3600:
 								PostResponse("https://api.telegram.org/bot7377332361:AAFr8FnibII4GPnfcsHrUjss5amE91GrzYs/sendMessage", {
-									"chat_id": "-4548879553",
-									"text": "@Супер1, @Супер2, @Cegth3, @РОП.\nАгент "+x["user"]+" все еще не берет заявки, проверьте агента и отпишите о результате в этот чат.\n Или закройте смену командой: /StopWorkTime"+x["id"]+" если агент уже завершил смену."
+									"chat_id": "-4511301904",
+									"text": "@otec_spdnt, @Irina_Novak, @afrika4e.\n\nАгент "+x["user"]+" все еще не берет заявки, проверьте агента и отпишите о результате в этот чат.\nИли закройте смену командой: /StopWorkTime"+x["BT_Id"]+" если агент уже завершил смену."
 								}, {
 									"Content-Type": "application/json",
 									"User-Agent": "insomnia/8.5.1"
@@ -264,11 +266,12 @@ def Get_Api_Data():
 								  "Content-Type": "application/json",
 								  "User-Agent": "insomnia/9.3.2"
 								})
+								print(f'Агент {x["user"]} все еще не берет заявки, проверьте агента и отпишите о результате в этот чат.')
 
 						else:
 							PostResponse("https://api.telegram.org/bot7377332361:AAFr8FnibII4GPnfcsHrUjss5amE91GrzYs/sendMessage", {
-									"chat_id": "-4548879553",
-									"text": "@Супер1, @Супер2, @Cegth3, @РОП.\nАгент "+x["user"]+" не берет заявки 1ч, проверьте агента и отпишите о результате в этот чат.\n Или закройте смену командой: /StopWorkTime"+x["id"]+" если агент уже завершил смену."
+									"chat_id": "-4511301904",
+									"text": "@otec_spdnt, @Irina_Novak, @afrika4e.\n\nАгент "+x["user"]+" не берет заявки 1ч, проверьте агента и отпишите о результате в этот чат.\nИли закройте смену командой: /StopWorkTime"+x["BT_Id"]+" если агент уже завершил смену."
 								}, {
 									"Content-Type": "application/json",
 									"User-Agent": "insomnia/8.5.1"
@@ -277,22 +280,10 @@ def Get_Api_Data():
 							  "Content-Type": "application/json",
 							  "User-Agent": "insomnia/9.3.2"
 							})
+							print(f'Агент {x["user"]} не берет заявки 1ч, проверьте агента и отпишите о результате в этот чат.')
 
 
-
-
-					PostResponse("https://api.telegram.org/bot7377332361:AAFr8FnibII4GPnfcsHrUjss5amE91GrzYs/sendMessage", {
-						"chat_id": "-4548879553",
-						"text": "Автоматически закрыл смену у Агента "+x["user"]+", Причина: Не проявляет активности более 1ч"
-					}, {
-						"Content-Type": "application/json",
-						"User-Agent": "insomnia/8.5.1"
-					})
-
-
-					print("Автоматически закрыл смену у Агента "+x["user"]+", Причина: Не проявляет активности более 1ч")
-
-				elif Current_Unix - x["LastBeryClick"] >= 43200 and Current_Unix - x["LastBeryClick"] < 2592000:
+				elif Current_Unix - x["LastBeryClick"] >= 39600 and Current_Unix - x["LastBeryClick"] < 2592000:
 					
 					a = PostResponse("https://speedinet.bitrix24.ru/rest/25550/92yb1mz0rkt5e2cl/timeman.close",
 						{
@@ -305,15 +296,6 @@ def Get_Api_Data():
 					})
 					print(a)
 
-					"""
-					PostResponse("https://api.telegram.org/bot7377332361:AAFr8FnibII4GPnfcsHrUjss5amE91GrzYs/sendMessage", {
-						"chat_id": "-1001903941079",
-						"text": "Автоматически закрыл смену у Агента "+x["user"]+", Причина: Не проявляет активности более 12ч"
-					}, {
-						"Content-Type": "application/json",
-						"User-Agent": "insomnia/8.5.1"
-					})
-                                        """
 					PutResponse("https://668253b204acc3545a090ff2.mockapi.io/SpeedInetBase/NoWork_Agents/"+x["id"], {"Online": False}, {
 					   "Content-Type": "application/json",
 					   "User-Agent": "insomnia/9.3.2"
