@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Итоги Тестов</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		*{
+			font-family: Calibri, sans-serif;
+		}
+
+		body {
+		    background: linear-gradient(131deg, #00000000 23%, #00000008 74%, #0000000d 81%);
+		    background-size: auto;
+		    display: flex;
+		    background-attachment: fixed;
+		    flex-wrap: wrap;
+		    justify-content: center;
+		}
+
+		/* ------------------------------------------ Шапка -------------------------------------------------*/
+		header{
+		    background: #303b44;
+		    padding-top: 10px;
+		    padding-bottom: 10px;
+		    padding-right: 30px;
+		    padding-left: 30px;
+		    height: 40px;
+		    width: 79%;
+		    border-radius: 10px;
+		    box-shadow: 0px 0px 20px 7px #b0b0b0;
+		}
+		content{
+			width: 80%;
+   			margin-top: 2%;
+		}
+		.HeaderText{
+		    color: white;
+		    margin-top: 0;
+		}
+		#HeaderText1{
+		    float: left;
+		}
+		#HeaderText2{
+		    float: right;
+		}
+		.TestHead{
+			background: white;
+		    width: 50%;
+		    border-radius: 8px;
+		    box-shadow: 0px 0px 6px 0px #dbe9f4;
+		    padding: 10px;
+		    padding-top: 5px;
+		    padding-bottom: 5px;
+		}
+		hr{
+			height: 2px;
+		    background: #dcdedf;
+		    border: none;
+		}
+		h1{
+			color: #303b44;
+		}
+		span{
+			font-weight: 400;
+		}
+		.TestBody-block{    
+			background: white;
+		    width: 80%;
+		    border-radius: 8px;
+		    box-shadow: 0px 0px 6px 0px #dbe9f4;
+		    padding: 10px;
+		    margin-top: 2%;
+		    padding-top: 5px;
+		    padding-bottom: 5px;
+		}
+		.TestBody-block-head{
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: flex-start;
+		    height: 48px;
+		}
+		.TestBody-Itog{
+			width: fit-content;
+		    font-size: 19px;
+		    
+		    color: white;
+		    padding: 7px;
+		    border-radius: 8px;
+		}
+		.TestBody-Num{
+			font-size: 30px;
+    		margin-top: 10px;
+		}
+		#Red{
+			background: red;
+		}
+		#Green{
+			background: #00c431;
+		}
+		#Yellow{
+			background: #ffa900;
+		}
+	</style>
+</head>
+<body>
+	<header>
+    	<h1 class="HeaderText" id="HeaderText1">База Знаний</h1>
+    	<h1 class="HeaderText" id="HeaderText2">SpeedInet</h1>
+    </header>
+	<content><div class="TestHead"><h1>Тест <span>Битрикс24</span></h1><hr><h1>Агент <span>Обухов Павел</span></h1></div><div class="TestBody"><div class="TestBody-block"><div class="TestBody-block-head"><h1 class="TestBody-Num">#1</h1><h1 class="TestBody-Itog" id="Green">Верно</h1></div> <h1 class="TestBody-Question">Вопрос: <span>Какую заявку мы можем занести в стадию 'Архивы'?</span></h1><hr><h1 class="TestBody-Answer">Ответ: <span> а. Клиент на этапе презентации отказался от дальнейшего диалога, сказал, что подключит точно такой же тариф через КЦ провайдера и сбросил трубку</span></h1></div><div class="TestBody"><div class="TestBody-block"><div class="TestBody-block-head"><h1 class="TestBody-Num">#2</h1><h1 class="TestBody-Itog" id="Red">Не Верно</h1></div> <h1 class="TestBody-Question">Вопрос: <span>У кого есть доступ к заявкам в стадии 'Сделана'?</span></h1><hr><h1 class="TestBody-Answer">Ответ: <span>Всем менеджерам</span></h1></div><div class="TestBody"><div class="TestBody-block"><div class="TestBody-block-head"><h1 class="TestBody-Num">#3</h1><h1 class="TestBody-Itog" id="Yellow">Требует Проверки</h1></div> <h1 class="TestBody-Question">Вопрос: <span>Какие заявки мы отправляем в стадию 'Подключается'?</span></h1><hr><h1 class="TestBody-Answer">Ответ: <span>4356</span></h1></div><div class="TestBody"><div class="TestBody-block"><div class="TestBody-block-head"><h1 class="TestBody-Num">#4</h1><h1 class="TestBody-Itog" id="Yellow">Требует Проверки</h1></div> <h1 class="TestBody-Question">Вопрос: <span>Как можно уточнить ФИО для регистрации заявки без звонка клиенту?</span></h1><hr><h1 class="TestBody-Answer">Ответ: <span>345</span></h1></div><div class="TestBody"><div class="TestBody-block"><div class="TestBody-block-head"><h1 class="TestBody-Num">#5</h1><h1 class="TestBody-Itog" id="Red">Не Верно</h1></div> <h1 class="TestBody-Question">Вопрос: <span>Что мы можем узнать о поступившем обращении из строки в заявке 'Сквозная аналитика'?</span></h1><hr><h1 class="TestBody-Answer">Ответ: <span>Конфигурацию ТП, которую хочет подключить клиент (пакет, моно-услуга, конвергент)</span></h1></div><div class="TestBody"><div class="TestBody-block"><div class="TestBody-block-head"><h1 class="TestBody-Num">#6</h1><h1 class="TestBody-Itog" id="Red">Не Верно</h1></div> <h1 class="TestBody-Question">Вопрос: <span>Если входящий звонок принял Ваня, но Петя первый перевел заявку в стадию 'В работе', чья она будет в итоге?</span></h1><hr><h1 class="TestBody-Answer">Ответ: <span> За Петей</span></h1></div><div class="TestBody"><div class="TestBody-block"><div class="TestBody-block-head"><h1 class="TestBody-Num">#7</h1><h1 class="TestBody-Itog" id="Red">Не Верно</h1></div> <h1 class="TestBody-Question">Вопрос: <span>У Вани выходной, но его заявка из стадии 'Подключается' выпала в стадию 'Новые', потому что позвонил клиент. Петя взял эту заявку, пообщался с клиентом, который хотел отказаться от услуг из-за их стоимости, убедил его в том, что это самое выгодное на данный момент предложение и заново поставил заявку в график. Что дальше нужно сделать Пете?</span></h1><hr><h1 class="TestBody-Answer">Ответ: <span> Оставить ответственным за заявку Ваню и вернуть ее ему в стадию 'Подключается'</span></h1></div><div class="TestBody"><div class="TestBody-block"><div class="TestBody-block-head"><h1 class="TestBody-Num">#8</h1><h1 class="TestBody-Itog" id="Green">Верно</h1></div> <h1 class="TestBody-Question">Вопрос: <span>Что нужно сделать, чтобы взять заявку в работу?</span></h1><hr><h1 class="TestBody-Answer">Ответ: <span> Нажать кнопку 'Взять заявку' или 'Встать в очередь'</span></h1></div>	</content>
+</body>
+</html>
