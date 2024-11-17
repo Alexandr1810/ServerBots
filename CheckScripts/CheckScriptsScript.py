@@ -24,17 +24,17 @@ def ChecScripts():
         print("Скрипт DelDublicat не запущен.")
         subprocess.Popen(["start", app_path, "../DelDublicat/ChecDublicates_Script.py"], shell=True)
 
-    if is_script_running('Check_NoWork_Agents.py'):
-        print("Скрипт NoWorkAgents запущен.")
-    else:
-        print("Скрипт NoWorkAgents не запущен.")
-        subprocess.Popen(["start", app_path, "../NoWorkAgents/Check_NoWork_Agents.py"], shell=True)
+    #if is_script_running('Check_NoWork_Agents.py'):
+    #    print("Скрипт NoWorkAgents запущен.")
+    #else:
+    #    print("Скрипт NoWorkAgents не запущен.")
+    #    subprocess.Popen(["start", app_path, "../NoWorkAgents/Check_NoWork_Agents.py"], shell=True)
 
-    if is_script_running('SendDailyCode.py'):
-        print("Скрипт SendCode запущен.")
-    else:
-        print("Скрипт SendCode не запущен.")
-        subprocess.Popen(["start", app_path, "../SendCode/SendDailyCode.py"], shell=True)
+    #if is_script_running('SendDailyCode.py'):
+    #    print("Скрипт SendCode запущен.")
+    #else:
+    #    print("Скрипт SendCode не запущен.")
+    #    subprocess.Popen(["start", app_path, "../SendCode/SendDailyCode.py"], shell=True)
 
     if is_script_running('CheckDeals_InWork_Sctipt.py'):
         print("Скрипт CheckDeals_InWork запущен.")
@@ -65,6 +65,12 @@ def ChecScripts():
     else:
         print("Скрипт StopPause_WorkTime не запущен.")
         subprocess.Popen(["start", app_path, "../StopPause_WorkTime/StopPause_WorkTime.py"], shell=True)
+
+    if is_script_running('ReplyWorkTimeBot.py'):
+        print("Скрипт ReplyWorkTimeBot запущен.")
+    else:
+        print("Скрипт ReplyWorkTimeBot не запущен.")
+        subprocess.Popen(["start", app_path, "../StopPause_WorkTime/ReplyWorkTimeBot.py"], shell=True)
 
     print("")
     current_datetime = datetime.datetime.now()
