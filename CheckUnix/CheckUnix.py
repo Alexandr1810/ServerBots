@@ -43,10 +43,11 @@ def ChecUnix():
             })
             print(x["StartText"]+str(int((currentUnix - savedUnix)/60))+x["ClousedText"])
             its_okey = False
+            time.sleep(1200)
         else:
             print(f"Все работает, последняя активность: {savedUnix} !")
             if its_okey == False:
-                SendToChat = GetResponse("https://api.telegram.org/bot7615326954:AAHqHflEsE23bwfLZqYuBWNhgs6iaLxjfIA/sendMessage?chat_id=1395354115&text=" + x["OkeyText"], {
+                SendToChat = GetResponse("https://api.telegram.org/bot6471375015:AAGrXnRtslswCg6E1pzCzjkWGqnbjBWXBpc/sendMessage?chat_id=1395354115&text=" + x["OkeyText"], {
                     "Content-Type": "application/json",
                     "User-Agent": "insomnia/8.5.1"
                 })
